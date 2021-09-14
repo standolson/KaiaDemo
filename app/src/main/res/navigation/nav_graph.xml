@@ -3,26 +3,25 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:id="@+id/nav_graph"
-	app:startDestination="@id/FirstFragment">
+	app:startDestination="@id/OverviewFragment">
 
 	<fragment
-		android:id="@+id/FirstFragment"
-		android:name="com.kaia.demo.FirstFragment"
-		android:label="@string/first_fragment_label"
-		tools:layout="@layout/fragment_first">
-
+		android:id="@+id/OverviewFragment"
+		android:name="com.kaia.demo.ui.OverviewFragment"
+		android:label="@string/overview_fragment_label"
+		tools:layout="@layout/overview_fragment">
 		<action
-			android:id="@+id/action_FirstFragment_to_SecondFragment"
-			app:destination="@id/SecondFragment" />
+			android:id="@+id/action_OverviewFragment_to_TrainingSessionFragment"
+			app:destination="@id/TrainingSessionFragment" />
 	</fragment>
-	<fragment
-		android:id="@+id/SecondFragment"
-		android:name="com.kaia.demo.SecondFragment"
-		android:label="@string/second_fragment_label"
-		tools:layout="@layout/fragment_second">
 
+	<fragment
+		android:id="@+id/TrainingSessionFragment"
+		android:name="com.kaia.demo.ui.TrainingSessionFragment"
+		android:label="@string/training_session_label"
+		tools:layout="@layout/training_session_fragment">
 		<action
-			android:id="@+id/action_SecondFragment_to_FirstFragment"
-			app:destination="@id/FirstFragment" />
+			android:id="@+id/action_TrainingSessionFragment_to_OverviewFragment"
+			app:destination="@id/OverviewFragment" />
 	</fragment>
 </navigation>
