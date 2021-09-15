@@ -63,6 +63,6 @@ class ExercisesRepository @Inject constructor() {
     }
 
     companion object {
-        val ENDPOINT_URL: String = "https://jsonblob.com/api/jsonBlob/027787de-c76e-11eb-ae0a-39a1b8479ec2"
+        val ENDPOINT_URL = "https://jsonblob.com/api/jsonBlob/027787de-c76e-11eb-ae0a-39a1b8479ec2"
     }
 }

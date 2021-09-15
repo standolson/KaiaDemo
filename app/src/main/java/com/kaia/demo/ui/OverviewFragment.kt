@@ -53,8 +53,6 @@ class OverviewFragment : Fragment() {
 
     private fun showExercises(exercises: List<Exercise>)
     {
-        Toast.makeText(context, "Got " + exercises.size + " exercises", Toast.LENGTH_LONG).show()
-
         val recyclerView = binding.root.findViewById(R.id.recycler_contents) as RecyclerView
         val adapter = ExercisesAdapter(exercises, ExerciseListener { exercise -> startTrainingSession() })
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
