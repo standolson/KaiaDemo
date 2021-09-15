@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:padding="@dimen/overview_margin"
+	android:background="?android:attr/listChoiceBackgroundIndicator">
+
+	<ImageView
+		android:id="@+id/overview_image"
+		android:layout_width="@dimen/overview_image_width"
+		android:layout_height="@dimen/overview_image_width"
+		android:layout_marginEnd="219dp"
+		android:scaleType="centerInside"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintRight_toLeftOf="@+id/overview_exercise_name"
+		tools:src="@mipmap/ic_launcher" />
+
+	<TextView
+		android:id="@+id/overview_exercise_name"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="@dimen/overview_margin"
+		android:layout_marginRight="@dimen/overview_margin"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintLeft_toRightOf="@+id/overview_image"
+		app:layout_constraintRight_toLeftOf="@+id/overview_exercise_favorite"
+		app:layout_constrainedWidth="true"
+		app:layout_constraintHorizontal_bias="0.0"
+		tools:text="Exercise Name Goes Here And Here And Here And Here" />
+
+	<CheckBox
+		android:id="@+id/overview_exercise_favorite"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:background="@android:color/transparent"
+		android:button="@android:drawable/btn_star"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintRight_toRightOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

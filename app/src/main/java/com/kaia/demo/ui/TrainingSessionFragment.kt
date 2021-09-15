@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.kaia.demo.R
 import com.kaia.demo.databinding.TrainingSessionFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TrainingSessionFragment : Fragment() {
 
     private var _binding: TrainingSessionFragmentBinding? = null

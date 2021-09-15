@@ -7,9 +7,11 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.19479166666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.17864583333333334" />
+        <entry key="app/src/main/res/layout/exercise_overview.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.17864583333333334" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.17864583333333334" />
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.17864583333333334" />
+        <entry key="app/src/main/res/layout/overview_fragment.xml" value="0.17864583333333334" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.17864583333333334" />
       </map>
     </option>
