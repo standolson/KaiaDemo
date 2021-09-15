@@ -2,4 +2,5 @@
 	<dimen name="overview_margin">16dp</dimen>
 	<dimen name="overview_image_width">100dp</dimen>
 	<dimen name="overview_image_height">56dp</dimen>
+	<dimen name="training_session_button_margin">16dp</dimen>
 </resources>

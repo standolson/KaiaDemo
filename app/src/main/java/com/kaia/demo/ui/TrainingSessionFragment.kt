@@ -27,7 +27,10 @@ class TrainingSessionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.buttonSecond.setOnClickListener {
+        binding.cancelTrainingButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
+        binding.favoriteExerciseButton.setOnClickListener {
             findNavController().popBackStack()
         }
     }

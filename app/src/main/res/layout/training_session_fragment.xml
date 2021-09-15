@@ -7,22 +7,34 @@
 	android:layout_height="match_parent"
 	tools:context=".ui.TrainingSessionFragment">
 
-	<Button
-		android:id="@+id/button_second"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="@string/previous"
+	<ImageView
+		android:id="@+id/overview_image"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:scaleType="centerInside"
+		app:layout_constraintTop_toTopOf="parent"
 		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/textview_second" />
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		tools:src="@mipmap/ic_launcher" />
 
-	<TextView
-		android:id="@+id/textview_second"
+	<Button
+		android:id="@+id/cancel_training_button"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		app:layout_constraintBottom_toTopOf="@id/button_second"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
+		android:layout_marginTop="@dimen/training_session_button_margin"
+		android:layout_marginRight="@dimen/training_session_button_margin"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		android:text="@string/cancel_training"/>
+
+	<Button
+		android:id="@+id/favorite_exercise_button"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="@dimen/training_session_button_margin"
+		android:layout_marginRight="@dimen/training_session_button_margin"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		android:text="@string/favorite_exercise"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
