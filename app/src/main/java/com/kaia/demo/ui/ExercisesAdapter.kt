@@ -48,7 +48,7 @@ class ExercisesAdapter(val list: List<Exercise>, val clickListener: ExerciseList
 
         // Put a click handler on the favorite button so we can update the
         // list of favorites
-        viewHolder.binding.overviewExerciseFavorite.setOnCheckedChangeListener { button, isChecked ->
+        viewHolder.binding.overviewExerciseFavorite.setOnCheckedChangeListener { _, isChecked ->
             ExercisePrefsDatabase.setFavoriteState(context, exercise.id, isChecked)
         }
     }

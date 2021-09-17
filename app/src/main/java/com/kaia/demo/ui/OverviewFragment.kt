@@ -6,17 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.kaia.demo.R
-import com.kaia.demo.databinding.OverviewFragmentBinding
-import com.kaia.demo.viewmodel.ExercisesViewModel
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.kaia.demo.R
+import com.kaia.demo.databinding.OverviewFragmentBinding
 import com.kaia.demo.model.Exercise
+import com.kaia.demo.viewmodel.ExercisesViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.InternalCoroutinesApi
 
 @AndroidEntryPoint
 class OverviewFragment : Fragment() {
@@ -35,6 +36,7 @@ class OverviewFragment : Fragment() {
         return binding.root
     }
 
+    @InternalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?)
     {
         super.onViewCreated(view, savedInstanceState)
@@ -54,7 +56,7 @@ class OverviewFragment : Fragment() {
     private fun showExercises(exercises: List<Exercise>)
     {
         val recyclerView = binding.root.findViewById(R.id.recycler_contents) as RecyclerView
-        val adapter = ExercisesAdapter(exercises, ExerciseListener { exercise -> startTrainingSession() })
+        val adapter = ExercisesAdapter(exercises, ExerciseListener { _ -> startTrainingSession() })
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         recyclerView.adapter = adapter
@@ -66,7 +68,7 @@ class OverviewFragment : Fragment() {
         Toast.makeText(context, "Start training session", Toast.LENGTH_LONG).show()
     }
 
-    protected fun showError(viewModel: ExercisesViewModel) {
+    private fun showError(viewModel: ExercisesViewModel) {
         Toast.makeText(context, "Error: " + viewModel.error.value, Toast.LENGTH_LONG).show()
     }
 

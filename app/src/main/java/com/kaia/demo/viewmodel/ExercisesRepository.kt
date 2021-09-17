@@ -1,31 +1,40 @@
 package com.kaia.demo.viewmodel
 
-import androidx.lifecycle.MediatorLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.kaia.demo.model.Exercise
 import com.kaia.demo.util.ResponseData
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
 import javax.inject.Inject
+import javax.inject.Singleton
 
+/**
+ * Repository class to communicate with webservice and cacbe tbe response.
+ * The assumption being made is that the data on the webservice is static
+ * and isn't changing.  By caching the first and only valid response (errors
+ * aren't cached), we're saving round-trips.
+ */
+@Singleton
 class ExercisesRepository @Inject constructor() {
 
-    suspend fun getExerciseList() : MediatorLiveData<ResponseData<List<Exercise>>> {
-        val liveData = MediatorLiveData<ResponseData<List<Exercise>>>()
+    private var cachedData: ResponseData<List<Exercise>>? = null
 
-        withContext(Dispatchers.IO) {
-            var responseData = fetchResponse()
-            withContext(Dispatchers.Main) {
-                liveData.value = responseData
+    suspend fun getExerciseList() : Flow<ResponseData<List<Exercise>>> {
+        return flow {
+            if (cachedData != null && !cachedData!!.hasStatusMessage())
+                emit(cachedData!!)
+            else {
+                cachedData = fetchResponse()
+                emit(cachedData!!)
             }
-        }
-
-        return liveData
+        }.flowOn(Dispatchers.IO)
     }
 
     private fun fetchResponse() : ResponseData<List<Exercise>> {

@@ -8,7 +8,7 @@ object ExercisePrefsDatabase {
     private val PREFERENCES_NAME = "favorites_pref"
     private val FAVORITES_KEY = "favorites_list"
 
-    public fun setFavoriteState(context: Context, id: Int?, state: Boolean)
+    fun setFavoriteState(context: Context, id: Int?, state: Boolean)
     {
         if (id == null)
             return
@@ -33,7 +33,7 @@ object ExercisePrefsDatabase {
         writeFavoriteList(prefs, favoriteList)
     }
 
-    public fun getFavoriteList(prefs: SharedPreferences): MutableList<String>
+    fun getFavoriteList(prefs: SharedPreferences): MutableList<String>
     {
         val favoriteList = prefs.getString(FAVORITES_KEY, null)
         if (favoriteList == null || favoriteList.length == 0)
@@ -42,7 +42,7 @@ object ExercisePrefsDatabase {
         return list.toMutableList()
     }
 
-    public fun getFavoriteState(context: Context, id: Int?): Boolean
+    fun getFavoriteState(context: Context, id: Int?): Boolean
     {
         if (id == null)
             return false

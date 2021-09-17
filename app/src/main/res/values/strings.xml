@@ -6,4 +6,5 @@
 	<string name="start_training">Start training</string>
 	<string name="cancel_training">Cancel training</string>
 	<string name="favorite_exercise">Favorite exercise</string>
+	<string name="unfavorite_exercise">Unfavorite exercise</string>
 </resources>
