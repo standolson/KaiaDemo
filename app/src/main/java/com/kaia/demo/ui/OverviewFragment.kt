@@ -30,7 +30,7 @@ class OverviewFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View?
+    ): View
     {
         _binding = OverviewFragmentBinding.inflate(inflater, container, false)
         return binding.root
@@ -46,11 +46,13 @@ class OverviewFragment : Fragment() {
         }
 
         viewModel.run {
-            exercises.observe(viewLifecycleOwner, Observer { showExercises(it) })
-            error.observe(viewLifecycleOwner, Observer { showError(viewModel) })
+            exercises.observe(viewLifecycleOwner, { showExercises(it) })
+            error.observe(viewLifecycleOwner, { showError(viewModel) })
         }
 
-        viewModel.loadExercises()
+        // Only load exercises if they haven't been loaded already
+        if (viewModel.exercises.value == null)
+            viewModel.loadExercises()
     }
 
     private fun showExercises(exercises: List<Exercise>)

@@ -32,7 +32,7 @@ class TrainingSessionFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = TrainingSessionFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -53,11 +53,13 @@ class TrainingSessionFragment : Fragment() {
         }
 
         viewModel.run {
-            exercises.observe(viewLifecycleOwner, Observer { startSlideShow(it)})
-            error.observe(viewLifecycleOwner, Observer { showError(viewModel) })
+            exercises.observe(viewLifecycleOwner, { startSlideShow(it)})
+            error.observe(viewLifecycleOwner, { showError(viewModel) })
         }
 
-        viewModel.loadExercises()
+        // Only load exercises if they haven't been loaded already
+        if (viewModel.exercises.value == null)
+            viewModel.loadExercises()
     }
 
     private fun startSlideShow(exercises: List<Exercise>) {
@@ -75,7 +77,8 @@ class TrainingSessionFragment : Fragment() {
 
         val exercise = exercises[index]
 
-        // Update the favorite button text
+        // Update the favorite button text and set the click listener for
+        // the current exercise
         setFavoriteButtonText(exercise)
         binding.favoriteExerciseButton.setOnClickListener {
             updateFavorite(exercise)
@@ -115,9 +118,13 @@ class TrainingSessionFragment : Fragment() {
         Toast.makeText(context, "Error: " + viewModel.error.value, Toast.LENGTH_LONG).show()
     }
 
+    override fun onPause() {
+        super.onPause()
+        handler.removeCallbacksAndMessages(null)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
-        handler.removeCallbacksAndMessages(null)
         _binding = null
     }
 
